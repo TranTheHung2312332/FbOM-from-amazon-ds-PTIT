@@ -1,15 +1,15 @@
-# Amazon Data Mining & Recommendation System Project
+# Amazon Data Mining Project
 
 ## Giới thiệu
 
 Đây là **bài tập lớn** phục vụ cho môn học trên trường
 
-Dự án sử dụng **bộ dữ liệu Amazon** nhằm nghiên cứu, phân tích và áp dụng các kỹ thuật khai phá dữ liệu cũng như xây dựng hệ thống khuyến nghị sản phẩm.
+Dự án sử dụng **bộ dữ liệu Amazon** nhằm nghiên cứu, phân tích và áp dụng các kỹ thuật khai phá dữ liệu.
 
 Mục tiêu chính của dự án bao gồm:
 - Khám phá và phân tích dữ liệu quy mô lớn
 - Tiền xử lý và trích xuất đặc trưng từ dữ liệu Amazon
-- Áp dụng các phương pháp và mô hình trong hệ khuyến nghị
+- Áp dụng các phương pháp và mô hình phân tích quan điểm dựa trên đặc trưng.
 - Đánh giá hiệu quả của các phương pháp được sử dụng
 
 ⚠️ **Lưu ý:**  
@@ -34,15 +34,6 @@ README này hiện chỉ mang tính **giới thiệu tổng quan**. Các nội d
 ## Nhóm thực hiện
 
 *(Sẽ cập nhật)*
-
----
-
-## Tiến độ
-
-- [x] Khởi tạo dự án
-- [x] Phân tích dữ liệu
-- [ ] Xây dựng mô hình
-- [ ] Đánh giá & báo cáo
 
 ---
 
