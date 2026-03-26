@@ -19,7 +19,7 @@ README này hiện chỉ mang tính **giới thiệu tổng quan**. Các nội d
 
 ## Dữ liệu
 
-- Nguồn dữ liệu: **Amazon Dataset**
+- Nguồn dữ liệu: **Amazon Review Dataset**
 - Chi tiết về tập dữ liệu và cách xử lý sẽ được bổ sung sau.
 
 ---
