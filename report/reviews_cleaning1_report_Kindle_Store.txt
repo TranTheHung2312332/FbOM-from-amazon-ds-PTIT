@@ -1,0 +1,7 @@
+Kết quả đầu ra: Kindle_Store:
+
+Số review ban đầu:       25,577,616
+Số review còn lại:       25,262,592
+Số câu sau khi tách:     146,902,993
+Kích thước ban đầu:      9.29GB
+Kích thước cuối cùng:    4.19GB
