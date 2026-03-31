@@ -1,33 +1,3 @@
-"""
-ABSA reviews cleaning - Part 2 (Spark, Linux/WSL-ready)
-
-Input schema (from cleaning 1):
-    parent_asin | review_id | sentence_id | sentence_text | rating
-
-What this script does:
-1. lowercase text
-2. normalize English contractions
-3. remove strange characters / punctuation / non-English chars, but keep apostrophe (')
-4. mark generic nouns as [GENERIC_NOUN]
-5. mark domain noise as [DOMAIN_NOISE]
-6. filter sentences by ABSA-oriented linguistic rules
-7. reassign sentence_id from 1..N within each review_id
-8. save cleaned parquet + full report
-
-Recommended install:
-    pip install pyspark pandas pyarrow spacy
-    python -m spacy download en_core_web_sm
-
-Example:
-    python scripts/reviews_cleaning2_absa_spark_linux.py \
-      --master "local[*]" \
-      --input /mnt/d/project/data/cleaned_1/example_data.parquet \
-      --output /mnt/d/project/outputs/cleaned_2/reviews_cleaning2_example.parquet \
-      --category-name example \
-      --report-dir /mnt/d/project/outputs/reports \
-      --debug-output /mnt/d/project/outputs/debug/example_debug.parquet \
-      --max-rows 10000
-"""
 
 from __future__ import annotations
 
