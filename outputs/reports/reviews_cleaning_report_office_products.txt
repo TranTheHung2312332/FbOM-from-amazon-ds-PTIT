@@ -1,5 +1,0 @@
-Số review ban đầu: 12845712
-Số review còn lại: 12710923
-Số câu sau khi tách: 41045027
-Kích thước ban đầu: 5557.23 MB
-Kích thước cuối cùng: 1743.18 MB

@@ -1,0 +1,18 @@
+Category: example
+Số review ban đầu: 150
+Số câu trước khi xử lý: 10,000
+Số câu sau khi xử lý: 4,409
+Số review còn lại (có ít nhất 1 câu giữ lại): 139
+Tỉ lệ review có thể có ích: 0.926667
+Kích thước ban đầu: 9.39MB
+Kích thước cuối cùng: 325.46KB
+
+Số lượng GENERIC_NOUNS được đánh dấu: 4,570
+Số lượng DOMAIN_NOISE được đánh dấu: 2,792
+Số câu không có danh từ hoặc cụm danh từ: 533
+Số câu chứa toàn tính từ hoặc cụm tính từ: 240
+Số câu chỉ mang mục đích xã giao: 56
+Số câu có số lượng từ < 5: 2,380
+Số câu target chỉ là pronoun: 1,101
+Số câu có target nhưng tất cả đều generic/noise: 826
+Số câu không khớp dependency pattern nào: 4,970
