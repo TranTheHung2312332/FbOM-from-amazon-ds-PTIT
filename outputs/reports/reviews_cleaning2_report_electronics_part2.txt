@@ -1,3 +1,4 @@
+Category: electronics
 Số lượng GENERIC_NOUNS: 36,741,961
 Số lượng DOMAIN_NOISE: 4,406,506
 Số câu không có danh từ (flag_no_noun_or_np): 4,934,142

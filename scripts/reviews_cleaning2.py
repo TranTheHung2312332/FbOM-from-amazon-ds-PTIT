@@ -433,7 +433,6 @@ def build_report(stats: Dict[str, object]) -> str:
         f"Kích thước ban đầu: {stats['input_size_human']}",
         f"Kích thước cuối cùng: {stats['output_size_human']}",
         "",
-        "=== Thống kê rule / marker ===",
         f"Số lượng GENERIC_NOUNS được đánh dấu: {stats['generic_hits']:,}",
         f"Số lượng DOMAIN_NOISE được đánh dấu: {stats['domain_noise_hits']:,}",
         f"Số câu không có danh từ hoặc cụm danh từ: {stats['cnt_no_noun_or_np']:,}",
@@ -444,7 +443,6 @@ def build_report(stats: Dict[str, object]) -> str:
         f"Số câu có target nhưng tất cả đều generic/noise: {stats['cnt_all_targets_generic_or_noise']:,}",
         f"Số câu không khớp dependency pattern nào: {stats['cnt_no_dependency_pattern']:,}",
         "",
-        "=== Primary removal reasons ===",
     ]
     for k, v in stats["reason_counts"].items():
         lines.append(f"{k}: {v:,}")
