@@ -11,5 +11,4 @@
   Câu không khớp dependency pattern:         0
   Số câu sau xử lý:                          13,915,549
   Số review còn lại:                         7,510,743
-  Tỉ lệ review có thể có ích:                59.12%
   Kích thước output:                         485.77 MB
