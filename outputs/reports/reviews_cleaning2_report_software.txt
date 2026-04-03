@@ -1,0 +1,14 @@
+Báo cáo: Software
+  Số câu ban đầu:        13,116,836
+  Số review ban đầu:     90,326
+  Sau chuẩn hóa:         13,116,084
+  Số lượng GENERIC_NOUN: 5,082,242
+  Số lượng DOMAIN_NOISE: 302,213
+  Câu quá ngắn (< 5 ký tự hoặc < 2 token):   475,475
+  Câu không có danh từ:                      1,527,386
+  Câu chỉ có pronoun làm target:             3,911,461
+  Câu toàn generic/noise target:             2,044,885
+  Câu không khớp dependency pattern:         183,358
+  Số câu sau xử lý:            4,973,519
+  Số review còn lại:           78,402
+  Kích thước output:           138.35 MB
