@@ -6,3 +6,5 @@
 
 data/raw/*
 !data/raw/example_data.jsonl
+data/processed/*
+
