@@ -1,0 +1,12 @@
+Số câu ban đầu: 41,045,027
+Số review ban đầu: 12,704,910
+Sau chuẩn hóa: 41,045,027
+Số lượng GENERIC_NOUN: 15,963,111
+Số lượng DOMAIN_NOISE: 2,208,100
+Câu quá ngắn (< 5 ký tự hoặc < 2 token): 951,579
+Câu không có danh từ: 5,398,684
+Câu chỉ có pronoun làm target: 20,779,215
+Câu toàn generic/noise target: 0
+Câu không khớp dependency pattern: 0
+Số câu sau xử lý: 13,915,549
+Kích thước output: 485.77 MB
