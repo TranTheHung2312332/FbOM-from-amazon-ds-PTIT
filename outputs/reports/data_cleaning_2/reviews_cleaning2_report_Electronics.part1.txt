@@ -1,0 +1,10 @@
+Số câu ban đầu: 87,448,730
+Số lượng GENERIC_NOUN: 37,269,591
+Số lượng DOMAIN_NOISE: 4,015,660
+Câu quá ngắn (< 5 ký tự hoặc < 2 token): 1,799,638
+Câu không có danh từ: 8,746,656
+Câu chỉ có pronoun làm target: 25,868,408
+Câu toàn generic/noise target: 10,623,325
+Câu không khớp dependency pattern: 1,347,133
+Số câu sau xử lý: 39,063,570
+Kích thước output: 1.43 GB

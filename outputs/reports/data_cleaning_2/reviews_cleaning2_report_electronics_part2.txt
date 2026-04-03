@@ -1,9 +1,9 @@
-Category: electronics
 Số lượng GENERIC_NOUNS: 36,741,961
 Số lượng DOMAIN_NOISE: 4,406,506
-Số câu không có danh từ (flag_no_noun_or_np): 4,934,142
-Số câu chứa toàn tính từ/cụm tính từ (flag_adj_only): 1,637,207
-Số câu chỉ mang mục đích xã giao (flag_social): 142,924
-Số câu có số lượng từ < 5 (flag_too_short): 1,679,831
+Số câu không có danh từ: 4,934,142
+Số câu chứa toàn tính từ/cụm tính từ: 1,637,207
+Số câu chỉ mang mục đích xã giao: 142,924
+Câu quá ngắn (< 5 ký tự hoặc < 2 token): 1,679,831
 Số câu trước khi xử lý: 80,350,136
 Số câu sau khi xử lý: 42,796,279
+Kích thước output: 1.9 GB

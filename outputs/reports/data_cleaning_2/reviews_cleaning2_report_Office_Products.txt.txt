@@ -1,6 +1,4 @@
 Số câu ban đầu: 41,045,027
-Số review ban đầu: 12,704,910
-Sau chuẩn hóa: 41,045,027
 Số lượng GENERIC_NOUN: 15,963,111
 Số lượng DOMAIN_NOISE: 2,208,100
 Câu quá ngắn (< 5 ký tự hoặc < 2 token): 951,579
