@@ -1,0 +1,60 @@
+Báo cáo Gán nhãn — Kindle_Store
+
+ 1. Lấy mẫu: 
+  Tổng câu Phase 2       : 9,294,220
+  Số câu lấy mẫu         : 1,000,000
+
+ 2. Phân cụm: 
+  Thuật toán             : KMeans
+  Số cụm                 : 100
+  Cụm nhỏ nhất           : 1,136 câu
+  Cụm lớn nhất           : 19,912 câu
+  Câu/cụm lấy mẫu        : 8
+
+ 3. Gán nhãn: 
+  Tổng câu gán nhãn      : 800
+  Có triplet             : 398  (49.8%)
+  Không có triplet       : 402  (50.2%)
+  Tổng số triplet        : 686
+  Trung bình triplet/câu : 1.72
+  Có > 1 triplet         : 193  (24.1%)
+
+ 4. Phân bố Sentiment: 
+  Tiêu cực (0)   : 125
+  Trung tính (1) : 10
+  Tích cực (2)   : 551
+
+ 5. File đầu ra: 
+  Kích thước : 0.05 MB
+  Số dòng    : 800
+
+ 6. Mẫu câu đã gán nhãn: 
+  [5.0★] some of the descriptions of the gory [GENERIC_NOUN] were more than needed
+      triplets: [["descriptions", "more than needed", 0]]
+
+  [3.0★] good yarn [GENERIC_NOUN] really special
+      triplets: [["yarn", "good", 2], ["yarn", "really special", 2]]
+
+  [3.0★] overall the writing was there but the plot holes and male fantasy vibe ended up leaving me unsatisfied
+      triplets: [["writing", "there", 1], ["plot holes", "left me unsatisfied", 0], ["male fantasy vibe", "left me unsatisfied", 0]]
+
+  [5.0★] the plots of john flanagans books move along well and it is obvious he has put a great deal of thought into bringing unusual subplots that help to keep strong interest
+      triplets: [["plots", "move along well", 2], ["subplots", "help to keep strong interest", 2]]
+
+  [5.0★] keeps you engaged and has intricate plot
+      triplets: [["plot", "intricate", 2]]
+
+  [2.0★] the story had almost zero plot the characters had almost zero depth the writing was amateur at best and lazy about typos and grammar
+      triplets: [["story", "almost zero plot", 0], ["characters", "almost zero depth", 0], ["writing", "amateur at best", 0], ["writing", "lazy about typos and grammar", 0]]
+
+  [4.0★] maybe some of the subplots are not so well thought out
+      triplets: [["subplots", "not so well thought out", 0]]
+
+  [4.0★] if i have any criticism of the book it was the ending no i will not spoil it but the journey was so enjoyable i forgive the destination
+      triplets: [["ending", "criticism", 0], ["journey", "enjoyable", 2]]
+
+  [2.0★] but the bad editing was a fight throughout the book
+      triplets: [["editing", "bad", 0]]
+
+  [3.0★] however i will say that the last few chapters saved this book from being a non rater for me
+      triplets: [["chapters", "saved", 2]]
