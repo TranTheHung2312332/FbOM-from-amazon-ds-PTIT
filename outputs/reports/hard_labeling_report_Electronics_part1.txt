@@ -1,0 +1,18 @@
+Labeling Report: Electronics_part1
+
+[Dataset]
+
+  Số câu được gán nhãn (triplets ≠ [])  :          381
+  Số câu không có triplet ([])           :          419
+  Số câu có nhiều hơn 1 triplet          :           87
+  Tổng số triplet                        :          506
+
+[Phân phối Sentiment]
+  Negative (0) :        172
+  Neutral  (1) :         26
+  Positive (2) :        308
+
+[Output]
+  Parquet  : /content/drive/MyDrive/outputs_electronics_cleaning/labeled_Electronics_part1.parquet
+  Size     : 1.48 GB
+  Report   : /content/drive/MyDrive/outputs_electronics_cleaning/reports/hard_labeling_report_Electronics_part1.txt
