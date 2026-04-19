@@ -1,0 +1,2 @@
+Số câu không có triplets: 224
+Tổng số lượng triplets: 862
