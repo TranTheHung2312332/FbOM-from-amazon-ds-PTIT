@@ -1,0 +1,8 @@
+Tổng số câu: 800
+Tổng triplets: 806
+Số câu không có triplet nào: 379
+Số câu có > 1 triplet: 245
+Sentiment:
+  negative (0): 283
+  neutral  (1): 52
+  positive (2): 471
