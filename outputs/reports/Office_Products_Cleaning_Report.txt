@@ -1,4 +1,3 @@
-
   Số câu ban đầu:                            41,045,027
   Số review ban đầu:                         12,704,910
   Sau chuẩn hóa:                             41,045,027
