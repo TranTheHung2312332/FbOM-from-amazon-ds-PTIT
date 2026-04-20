@@ -1,0 +1,15 @@
+Total sentences annotated   : 800
+Sentences with triplets     : 495
+Sentences without triplets  : 305
+Coverage                    : 61.9%
+
+TRIPLET STATISTICS
+Total triplets extracted    : 981
+Avg triplets/sentence (w/t) : 1.98
+Sentences with >1 triplet   : 301
+Max triplets per sentence   : 9
+
+SENTIMENT DISTRIBUTION
+Negative   (0):      345  ( 35.2%)
+Neutral    (1):       66  (  6.7%)
+Positive   (2):      570  ( 58.1%)
