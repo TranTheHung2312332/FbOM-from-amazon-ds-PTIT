@@ -1,0 +1,56 @@
+ABSA PIPELINE VỚI T5
+
+1.  TỔNG QUAN
+
+Pipeline thực hiện bài toán Aspect-Based Sentiment Analysis (ABSA) dưới
+dạng text-to-text. Thay vì classification truyền thống, mô hình học cách
+sinh ra nhãn sentiment (positive / neutral / negative) từ input gồm câu
+và aspect.
+
+2.  DỮ LIỆU
+
+-   Tiền xử lý:
+
+    -   Loại bỏ các token đặc biệt (ví dụ: [GENERIC_NOUN], )
+    -   Chuẩn hoá khoảng trắng
+
+-   Format dữ liệu: Input : “aspect: {aspect} sentence: {sentence}”
+    Output: “{sentiment}”
+
+-   Phân phối nhãn:
+
+    -   Mất cân bằng: positive chiếm đa số
+    -   Không oversample, model học implicit qua generation
+
+-   Chia tập dữ liệu:
+
+    -   Split theo câu (train/val/test) trước
+    -   Sau đó tạo (sentence, aspect) → tránh data leakage
+
+3.  Ý TƯỞNG VÀ CÁCH THỰC HIỆN
+
+Ý tưởng: Chuyển ABSA thành bài toán text generation: - Input: câu +
+aspect - Output: sentiment
+
+Kiến trúc: - Model: T5-base (~220M params) - Encoder-Decoder - Không cần
+classification head
+
+Huấn luyện: - Loss: CrossEntropy - Learning rate: ~3e-5 - Batch size:
+16–32 - Epochs: 3–5 - Teacher forcing
+
+Suy luận: - Dùng generate() - Map output text → label
+
+Đánh giá: - Accuracy - F1-macro - Classification report
+
+4.  NHẬN XÉT
+
+Ưu điểm: - Linh hoạt, không cần classifier riêng - Hiểu context tốt
+
+Nhược điểm: - Chậm hơn BERT - Có thể sinh sai format - Tốn tài nguyên
+
+5.  HƯỚNG PHÁT TRIỂN
+
+-   Dùng flan-t5-large
+-   Constrain decoding
+-   Kết hợp ATE → pipeline end-to-end
+-   So sánh với RoBERTa, DeBERTa
