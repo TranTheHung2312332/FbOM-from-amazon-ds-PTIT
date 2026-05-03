@@ -1,0 +1,5 @@
+Tổng số bản ghi: 42,796,279
+Số bản ghi confidence cao: 30,515,923 (71.31%)
+Tổng số aspect: 25,195,697
+Số câu có aspect trong tập high confidence: 19,577,421 (64.15%)
+Trung bình aspect/sample: 0.83
