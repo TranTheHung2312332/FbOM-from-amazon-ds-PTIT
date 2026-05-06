@@ -1,0 +1,20 @@
+ATE Phase 1 Report — cleaned2_Kindle_Store 
+
+[Dataset]
+  Total samples processed : 60,957,797
+  High confidence         : 48,006,205
+    - Negative (no aspect): 23,983,161  (49.96% of high conf)
+    - Positive (has aspect): 24,023,044  (50.04% of high conf)
+  Low confidence          : 13,251,543  (21.64% of total)
+
+[Thresholds]
+  gate_threshold  : 0.9
+  span_threshold  : 0.85
+  negative_upper  : <= 0.1
+  positive_lower  : >= 0.9
+
+[High Confidence Statistics]
+  Has aspect rate         : 50.04%
+  Total aspects extracted : 31,354,414
+  Avg aspects / sample    : 0.6492
+  Avg aspects / positive  : 1.3051
