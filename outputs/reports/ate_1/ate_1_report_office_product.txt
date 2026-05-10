@@ -1,0 +1,8 @@
+--- Thống kê Chi tiết (ate1_Office_Products) ---
+Tổng số bản ghi (High + Low): 13,915,549
+Số bản ghi High: 10,343,383
+Tỉ lệ sample pass: 74.33%
+---
+Tổng số aspect trong High: 8,350,150
+Số câu High có aspect: 6,490,212 (62.75%)
+Trung bình aspect/sample (High): 0.81
