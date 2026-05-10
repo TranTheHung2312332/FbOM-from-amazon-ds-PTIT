@@ -1,0 +1,18 @@
+
+ATE Phase 1 Report - labeled_Electronics_part1
+
+
+[Dataset]
+  Total samples processed : 39,063,570
+  High confidence         : 28,095,697  (71.92% of total)
+    - Negative (no aspect): 12,106,521  (43.09% of high conf)
+    - Positive (has aspect): 15,989,176  (56.91% of high conf)
+  Low confidence          : 10,967,873  (28.08% of total)
+
+
+[High Confidence Statistics]
+  Has aspect rate         : 56.91%
+  Total aspects extracted : 20,564,946
+  Avg aspects / sample    : 0.5264
+  Avg aspects / positive  : 1.2862
+
