@@ -1,0 +1,24 @@
+polar_threshold: 0.9
+neutral_threshold: 0.55
+
+1. Row-level statistics
+total_input_rows_after_ATE: 30,515,923
+rows_with_aspect: 19,577,421
+rows_without_aspect_dropped: 10,938,502
+high_confidence_rows: 16,464,758
+low_confidence_rows: 3,112,663
+
+2. Confidence rates based on original ATE dataset
+high_confidence_rate: 0.539546
+low_confidence_rate: 0.102001
+dropped_no_aspect_rate: 0.358452
+
+3. Aspect-level statistics
+total_aspects_in_input: 25,195,697
+high_confidence_aspects: 20,721,778
+high_confidence_aspect_rate: 0.822433
+
+4. Sentiment distribution in high-confidence aspects
+negative: 4,635,190 (0.223687)
+neutral: 18,316 (0.000884)
+positive: 16,068,272 (0.775429)
