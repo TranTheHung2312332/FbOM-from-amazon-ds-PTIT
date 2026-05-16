@@ -1,0 +1,37 @@
+ASC final report: asc1_office_products
+category_name: office_products
+
+asc_model_path: /content/drive/MyDrive/asc_1_office_products/asc_teacher_phase1
+input_chunks_dir: /content/drive/MyDrive/ate_1_Ofice/parts/high
+output_root: /content/drive/MyDrive/asc_1_office_Products
+
+polar_threshold: 0.9
+neutral_threshold: 0.55
+
+1. Row-level statistics
+total_input_rows_after_ATE: 10,343,383
+rows_with_aspect: 6,490,212
+rows_without_aspect_dropped: 3,853,171
+high_confidence_rows: 5,401,601
+low_confidence_rows: 1,088,611
+
+2. Confidence rates based on original ATE dataset
+high_confidence_rate: 0.522228
+low_confidence_rate: 0.105247
+dropped_no_aspect_rate: 0.372525
+
+3. Aspect-level statistics
+total_aspects_in_input: 8,350,150
+high_confidence_aspects: 6,783,166
+high_confidence_aspect_rate: 0.812341
+
+4. Sentiment distribution in high-confidence aspects
+negative: 1,925,578
+neutral: 6,961
+positive: 4,850,627
+
+5. Output files
+high_parts_dir: /content/drive/MyDrive/asc_1_electronics_2/parts/high
+low_parts_dir: /content/drive/MyDrive/asc_1_electronics_2/parts/low
+final_high_path: /content/drive/MyDrive/asc_1_electronics_2/final/high_confidence_samples_office_products.parquet
+final_low_path: /content/drive/MyDrive/asc_1_electronics_2/final/low_confidence_samples_office_products.parquet
