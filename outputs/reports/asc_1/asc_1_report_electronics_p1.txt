@@ -1,0 +1,18 @@
+
+ASC Phase 1 — Electronics_part1  
+
+[Input ATE High Confidence]
+  Total ATE high conf      :  28,095,697
+  With aspects (processed) :  15,989,176  (56.91% of total)
+  Without aspects (skipped):  12,106,521  (43.09% of total)
+
+[ ASC Confidence Split]
+  ASC High confidence :  12,990,920  (46.24% of ATE total)
+  ASC Low  confidence :   2,998,256  (10.67% of ATE total)
+
+[Sentiment Distribution — ASC High Confidence]
+  Total aspects classified :  16,252,502
+  Positive :  11,608,536  (71.42%)
+  Neutral  :      21,817  ( 0.13%)
+  Negative :   4,622,149  (28.44%)
+
