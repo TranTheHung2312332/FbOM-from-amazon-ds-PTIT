@@ -1,0 +1,35 @@
+============================================================
+ASC Phase 1 Report — kindle_store
+============================================================
+
+[Thresholds]
+  Polar (neg/pos) threshold : 0.9
+  Neutral threshold         : 0.55
+
+[Dataset]
+  Total samples (truoc loc)        :   48,009,200
+  Samples co aspect                :   24,055,039  (50.11%)
+  Samples khong co aspect (loai bo):   23,954,161  (49.89%)
+
+[ASC Results]
+  High confidence sentences :   21,043,349
+  Low confidence sentences  :    3,011,690
+  High confidence ratio     : 0.4383  (43.83% cua tong samples)
+
+[Sentiment Distribution — aspect level, high confidence]
+  Total aspects   :   26,752,625
+  Positive        :   23,645,041  (88.38%)
+  Neutral         :       19,656  (0.07%)
+  Negative        :    3,087,928  (11.54%)
+
+[Per-split Summary]
+  Split 00: total= 9,601,840  with_asp= 4,814,876  high= 4,211,757  low=   603,119
+  Split 01: total= 9,601,840  with_asp= 4,809,631  high= 4,207,526  low=   602,105
+  Split 02: total= 9,601,840  with_asp= 4,810,373  high= 4,207,025  low=   603,348
+  Split 03: total= 9,601,840  with_asp= 4,809,918  high= 4,207,829  low=   602,089
+  Split 04: total= 9,601,840  with_asp= 4,810,241  high= 4,209,212  low=   601,029
+
+[Output Files]
+  High: /content/drive/MyDrive/data_p4_kpdl/asc_final/high_confidence_samples_kindle_store.parquet
+  Low : /content/drive/MyDrive/data_p4_kpdl/asc_final/low_confidence_samples_kindle_store.parquet
+============================================================
