@@ -1,0 +1,9 @@
+ASC Phase 2 Benchmark
+Model: roberta-base
+accuracy: 0.860614
+macro_precision: 0.801380
+macro_recall: 0.646869
+macro_f1: 0.666212
+weighted_precision: 0.860876
+weighted_recall: 0.860614
+weighted_f1: 0.853017
