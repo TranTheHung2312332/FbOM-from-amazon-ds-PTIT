@@ -1,0 +1,9 @@
+input_low_confidence_rows_from_phase1: 3,112,663
+high_confidence_rows_new: 19,384,198
+low_confidence_rows_new: 193,223
+high_confidence_rate: 6.2275
+
+high_confidence_aspects: 24,892,080
+negative: 6,852,148 (0.2753)
+neutral: 167,679 (0.0067)
+positive: 17,872,253 (0.7180)
