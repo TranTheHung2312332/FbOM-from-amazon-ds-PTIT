@@ -1,0 +1,33 @@
+============================================================
+ASC Phase 2 Report — kindle_store
+============================================================
+
+[Thresholds]
+  Polar (neg/pos) threshold : 0.9
+  Neutral threshold         : 0.55
+
+[Input — Low Confidence P1]
+  Low confidence sentences P1 :    3,011,690
+
+[ASC Phase 2 Results]
+  New high confidence (from low P1) :    2,802,044
+  Still low confidence              :      209,646
+  Conversion rate                   : 93.04%
+
+[Final Merged Dataset]
+  Total samples (truoc loc)  :   48,009,200
+  High confidence P1         :   21,043,349
+  + New high P2              :    2,802,044
+  = Final high confidence    :   23,845,393  (49.67% cua tong samples)
+  Final low confidence       :      209,646
+
+[Sentiment Distribution — aspect level, final high confidence]
+  Total aspects   :   30,822,868
+  Positive        :   25,338,838  (82.21%)
+  Neutral         :      100,940  (0.33%)
+  Negative        :    5,383,090  (17.46%)
+
+[Output Files]
+  High: /content/drive/MyDrive/data_p4_kpdl/asc_final_phase2/high_confidence_samples_kindle_store.parquet
+  Low : /content/drive/MyDrive/data_p4_kpdl/asc_final_phase2/low_confidence_samples_kindle_store.parquet
+============================================================
