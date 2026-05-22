@@ -1,0 +1,28 @@
+==============================================================
+  ASC Phase 2 — Pseudo Labeling Report
+  Category : Electronics_part1
+==============================================================
+
+[Input — ASC Phase 1 Low Confidence]
+  Phase 1 low conf total :    2,998,256
+
+[Phase 2 Inference Output]
+  New high confidence  :    2,811,090  (93.76%)
+  New low  confidence  :      187,166  (6.24%)
+
+[Combined High Confidence (Phase 1 + Phase 2)]
+  Phase 1 high     :   12,990,920
+  Phase 2 new high :    2,811,090
+  Combined total   :   15,802,010
+
+[Sentiment Distribution — Combined High Confidence]
+  Total aspects classified :   20,270,822
+  Positive : 13,322,918  (65.72%)
+  Neutral  :    175,519  (0.87%)
+  Negative :  6,772,385  (33.41%)
+
+[Output Files]
+  high : /content/drive/MyDrive/outputs_electronics_cleaning/ASC_2/high_confidence_samples_Electronics_part1.parquet
+  low  : /content/drive/MyDrive/outputs_electronics_cleaning/ASC_2/low_confidence_samples_Electronics_part1.parquet
+
+==============================================================
