@@ -1,4 +1,6 @@
 import re
+import os
+from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
@@ -7,11 +9,34 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-asc_model_path = "/content/drive/MyDrive/absa_self_train_phase1/asc_teacher_phase1"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-asc_tokenizer = AutoTokenizer.from_pretrained(asc_model_path, use_fast=True)
-asc_model = AutoModelForSequenceClassification.from_pretrained(asc_model_path).to(device)
-asc_model.eval()
+asc_model_path = os.environ.get(
+    "ABSA_ASC_MODEL_PATH",
+    str(PROJECT_ROOT / "models" / "asc" / "model"),
+)
+
+asc_tokenizer = None
+asc_model = None
+
+
+def load_model(model_path=None, model_device=None):
+    global asc_model_path, asc_tokenizer, asc_model, device
+
+    if model_path is not None:
+        asc_model_path = model_path
+
+    if model_device is not None:
+        device = model_device
+
+    asc_tokenizer = AutoTokenizer.from_pretrained(asc_model_path, use_fast=True)
+    asc_model = AutoModelForSequenceClassification.from_pretrained(asc_model_path).to(device)
+    asc_model.eval()
+
+
+def ensure_model_loaded():
+    if asc_tokenizer is None or asc_model is None:
+        load_model()
 
 
 def clean_text(text):
@@ -38,6 +63,7 @@ def predict_asc(
     batch_size=64,
     max_length=192,
 ):
+    ensure_model_loaded()
     single_input = isinstance(sentences, str)
 
     if single_input:

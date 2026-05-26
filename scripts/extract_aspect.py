@@ -1,4 +1,6 @@
+import os
 import re
+from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
@@ -7,16 +9,51 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, Auto
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-gate_model_path = "/content/drive/MyDrive/absa_self_train_phase1/ate_gate_teacher_phase1/"
-ate_model_path = "/content/drive/MyDrive/absa_self_train_phase1/ate_teacher_phase1"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-gate_tokenizer = AutoTokenizer.from_pretrained(gate_model_path, use_fast=True)
-gate_model = AutoModelForSequenceClassification.from_pretrained(gate_model_path).to(device)
-gate_model.eval()
+gate_model_path = os.environ.get(
+    "ABSA_GATE_MODEL_PATH",
+    str(PROJECT_ROOT / "models" / "gate"),
+)
+ate_model_path = os.environ.get(
+    "ABSA_ATE_MODEL_PATH",
+    str(PROJECT_ROOT / "models" / "ate"),
+)
 
-ate_tokenizer = AutoTokenizer.from_pretrained(ate_model_path, use_fast=True)
-ate_model = AutoModelForTokenClassification.from_pretrained(ate_model_path).to(device)
-ate_model.eval()
+gate_tokenizer = None
+gate_model = None
+ate_tokenizer = None
+ate_model = None
+
+
+def load_models(gate_path=None, ate_path=None, model_device=None):
+    global gate_model_path, ate_model_path
+    global gate_tokenizer, gate_model, ate_tokenizer, ate_model, device
+
+    if model_device is not None:
+        device = model_device
+
+    if gate_path is not None:
+        gate_model_path = gate_path
+        gate_tokenizer = AutoTokenizer.from_pretrained(gate_model_path, use_fast=True)
+        gate_model = AutoModelForSequenceClassification.from_pretrained(gate_model_path).to(device)
+        gate_model.eval()
+
+    if ate_path is not None:
+        ate_model_path = ate_path
+        ate_tokenizer = AutoTokenizer.from_pretrained(ate_model_path, use_fast=True)
+        ate_model = AutoModelForTokenClassification.from_pretrained(ate_model_path).to(device)
+        ate_model.eval()
+
+
+def ensure_gate_model_loaded():
+    if gate_tokenizer is None or gate_model is None:
+        load_models(gate_path=gate_model_path)
+
+
+def ensure_ate_model_loaded():
+    if ate_tokenizer is None or ate_model is None:
+        load_models(ate_path=ate_model_path)
 
 TOKEN_RE = re.compile(r"\b\w+(?:'\w+)?\b")
 
@@ -75,6 +112,7 @@ def decode_bio_spans(tokens, labels, confidences):
     return sorted(best.values(), key=lambda x: (-x["confidence"], x["aspect"]))
 
 def predict_gate_proba(sentences, batch_size=64, max_length=192):
+    ensure_gate_model_loaded()
     probs_all = []
 
     for i in range(0, len(sentences), batch_size):
@@ -97,6 +135,7 @@ def predict_gate_proba(sentences, batch_size=64, max_length=192):
     return probs_all
 
 def predict_ate_one(sentence, max_length=192):
+    ensure_ate_model_loaded()
     tokens = tokenize_words(sentence)
 
     if not tokens:

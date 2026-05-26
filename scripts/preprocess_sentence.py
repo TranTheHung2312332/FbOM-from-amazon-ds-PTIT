@@ -4,6 +4,9 @@ import re
 from collections.abc import Iterable
 from typing import List, Union
 
+# =========================
+# Constants
+# =========================
 
 GENERIC_NOUNS = {
     "thing", "things", "stuff", "item", "items", "product", "products", "object", "objects",
@@ -69,18 +72,12 @@ PRONOUNS = {
     "i", "it", "this", "that", "these", "those", "they", "he", "she", "them", "him", "her"
 }
 
-NLP = None
+_NLP_CACHE = {}
 
 
-def get_nlp(model_name: str = "en_core_web_sm"):
-    global NLP
-
-    if NLP is None:
-        import spacy
-        NLP = spacy.load(model_name, disable=["ner"])
-
-    return NLP
-
+# =========================
+# Normalize helpers
+# =========================
 
 def normalize_contractions(text: str) -> str:
     return CONTRACTION_RE.sub(lambda m: CONTRACTIONS[m.group(0)], text)
@@ -107,6 +104,17 @@ def normalize_text(text: object) -> str:
 def simple_tokens(text: str) -> List[str]:
     return TOKEN_RE.findall(text)
 
+
+def get_nlp(model_name: str):
+    if model_name not in _NLP_CACHE:
+        import spacy
+        _NLP_CACHE[model_name] = spacy.load(model_name, disable=["ner"])
+    return _NLP_CACHE[model_name]
+
+
+# =========================
+# spaCy rule helpers
+# =========================
 
 def token_key(token) -> str:
     lemma = token.lemma_.lower().strip()
@@ -147,7 +155,7 @@ def is_adj_only_or_phrase(doc) -> bool:
 
 
 def pronoun_target_only(doc) -> bool:
-    pron_target = False
+    pronoun_target = False
     noun_target = False
 
     for tok in doc:
@@ -155,9 +163,9 @@ def pronoun_target_only(doc) -> bool:
             if tok.pos_ in {"NOUN", "PROPN"}:
                 noun_target = True
             elif tok.pos_ == "PRON" or tok.text.lower() in PRONOUNS:
-                pron_target = True
+                pronoun_target = True
 
-    return pron_target and not noun_target
+    return pronoun_target and not noun_target
 
 
 def extract_aspect_targets(doc):
@@ -194,6 +202,10 @@ def is_opinion_predicate(token) -> bool:
 
     return False
 
+
+# =========================
+# Dependency patterns
+# =========================
 
 def pattern_amod(doc) -> bool:
     return any(
@@ -304,33 +316,9 @@ PATTERNS = [
 ]
 
 
-def build_tagged_final_text(doc) -> str:
-    """
-    Giống code ban đầu:
-    - token generic noun -> [GENERIC_NOUN]
-    - token domain noise -> [DOMAIN_NOISE]
-    - token khác giữ dạng lowercase
-    """
-
-    final_tokens = []
-
-    for tok in doc:
-        if tok.is_space:
-            continue
-
-        key = token_key(tok)
-
-        if key in GENERIC_NOUNS:
-            final_tokens.append("[GENERIC_NOUN]")
-        elif key in DOMAIN_NOISE:
-            final_tokens.append("[DOMAIN_NOISE]")
-        else:
-            final_tokens.append(tok.text.lower())
-
-    final_text = MULTISPACE_RE.sub(" ", " ".join(final_tokens)).strip()
-
-    return final_text
-
+# =========================
+# Core preprocessing
+# =========================
 
 def should_keep_sentence(doc, normalized_text: str) -> bool:
     tokens = simple_tokens(normalized_text)
@@ -351,8 +339,7 @@ def should_keep_sentence(doc, normalized_text: str) -> bool:
         for tok in noun_targets
     )
 
-    matched_patterns = [pattern for pattern in PATTERNS if pattern(doc)]
-    flag_no_dependency_pattern = len(matched_patterns) == 0
+    flag_no_dependency_pattern = not any(pattern(doc) for pattern in PATTERNS)
 
     reject_flags = [
         flag_too_short,
@@ -367,6 +354,25 @@ def should_keep_sentence(doc, normalized_text: str) -> bool:
     return not any(reject_flags)
 
 
+def build_final_text(doc) -> str:
+    """
+    Không thêm marker [GENERIC_NOUN] / [DOMAIN_NOISE].
+    Chỉ trả về câu đã normalize/tokenize lại theo spaCy.
+    """
+    tokens = []
+
+    for tok in doc:
+        if tok.is_space or tok.is_punct:
+            continue
+
+        text = tok.text.lower().strip()
+
+        if text:
+            tokens.append(text)
+
+    return MULTISPACE_RE.sub(" ", " ".join(tokens)).strip()
+
+
 def preprocess_sentences(
     sentences: Union[str, Iterable[object]],
     spacy_model: str = "en_core_web_sm",
@@ -374,14 +380,10 @@ def preprocess_sentences(
 ) -> List[str]:
     """
     Nhận 1 câu hoặc batch câu.
-    Trả về list[str] có cùng số lượng phần tử với input.
+    Luôn trả về list[str] có cùng số lượng phần tử với input.
 
-    Pipeline:
-    1. Normalize text
-    2. Parse bằng spaCy
-    3. Tạo final_text có tag [GENERIC_NOUN] / [DOMAIN_NOISE]
-    4. Quét luật filter
-    5. Nếu bị loại -> ""
+    - Câu được giữ lại: trả về câu đã tiền xử lý.
+    - Câu bị loại bỏ: trả về "".
     """
 
     if isinstance(sentences, str) or sentences is None:
@@ -401,11 +403,8 @@ def preprocess_sentences(
             results.append("")
             continue
 
-        final_text = build_tagged_final_text(doc)
-        keep = should_keep_sentence(doc, normalized_text)
-
-        if keep and final_text:
-            results.append(final_text)
+        if should_keep_sentence(doc, normalized_text):
+            results.append(build_final_text(doc))
         else:
             results.append("")
 
@@ -413,7 +412,7 @@ def preprocess_sentences(
 
 
 if __name__ == "__main__":
-    test_one = "The screen and product are excellent."
+    test_one = "The battery life is excellent!"
     print("Single sentence:")
     print(preprocess_sentences(test_one))
 
@@ -426,12 +425,8 @@ if __name__ == "__main__":
         "The package arrived late.",
         "The sound and display are amazing.",
         "I don't like the keyboard.",
-        "The product is useful.",
-        "The shipping was terrible.",
     ]
 
     print("\nBatch:")
-    processed_batch = preprocess_sentences(test_batch)
-
-    for original, processed in zip(test_batch, processed_batch):
+    for original, processed in zip(test_batch, preprocess_sentences(test_batch)):
         print(f"{original!r} -> {processed!r}")

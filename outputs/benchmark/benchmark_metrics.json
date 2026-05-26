@@ -1,0 +1,90 @@
+{
+  "dataset": {
+    "requested_path": "data\\benchmark\\Laptop_Train_v2.csv",
+    "path": "data\\benchmark\\Laptop_Train_v2.xml",
+    "num_sentences": 3045,
+    "num_gold_aspects": 2358,
+    "num_asc_eval_aspects": 2313,
+    "num_conflict_aspects_skipped_for_asc": 45
+  },
+  "models": {
+    "ate_model": "models\\ate",
+    "asc_model": "models\\asc\\model",
+    "device": "cuda",
+    "batch_size": 32,
+    "max_length": 192
+  },
+  "ate": {
+    "accuracy_exact_match": 0.46765188834154353,
+    "metric_level": "token_binary",
+    "precision": 0.5274463007159904,
+    "recall": 0.3756373937677054,
+    "f1": 0.4387822634017207,
+    "token_accuracy": 0.9253274628508531,
+    "token_true_positive": 1326,
+    "token_false_positive": 1188,
+    "token_false_negative": 2204,
+    "token_true_negative": 40707,
+    "token_support": 45425,
+    "span_precision_exact": 0.4386422976501306,
+    "span_recall_exact": 0.356234096692112,
+    "span_f1_exact": 0.3931663936344489,
+    "span_true_positive_exact": 840,
+    "span_false_positive_exact": 1075,
+    "span_false_negative_exact": 1518,
+    "gold_spans": 2358,
+    "predicted_spans": 1915
+  },
+  "asc": {
+    "accuracy": 0.7427583225248595,
+    "precision_macro": 0.628161502688615,
+    "precision_weighted": 0.6754014270284227,
+    "recall_macro": 0.6196298389760734,
+    "recall_weighted": 0.7427583225248595,
+    "f1_macro": 0.5598998667160927,
+    "f1_weighted": 0.6667883918686544,
+    "per_class": {
+      "negative": {
+        "precision": 0.7672583826429981,
+        "recall": 0.8983833718244804,
+        "f1": 0.8276595744680851,
+        "support": 866
+      },
+      "neutral": {
+        "precision": 0.3888888888888889,
+        "recall": 0.015217391304347827,
+        "f1": 0.029288702928870293,
+        "support": 460
+      },
+      "positive": {
+        "precision": 0.7283372365339579,
+        "recall": 0.9452887537993921,
+        "f1": 0.8227513227513228,
+        "support": 987
+      }
+    },
+    "labels": [
+      "negative",
+      "neutral",
+      "positive"
+    ],
+    "confusion_matrix": [
+      [
+        778,
+        5,
+        83
+      ],
+      [
+        188,
+        7,
+        265
+      ],
+      [
+        48,
+        6,
+        933
+      ]
+    ],
+    "support": 2313
+  }
+}
