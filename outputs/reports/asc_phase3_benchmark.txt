@@ -1,0 +1,23 @@
+ASC Phase 3 Benchmark
+Model: roberta-base
+accuracy: 0.859335
+
+macro_precision: 0.746192
+macro_recall: 0.654746
+macro_f1: 0.672907
+
+weighted_precision: 0.855524
+weighted_recall: 0.859335
+weighted_f1: 0.853459
+
+negative_precision: 0.779720
+negative_recall: 0.871094
+negative_f1: 0.822878
+
+neutral_precision: 0.545455
+neutral_recall: 0.200000
+neutral_f1: 0.292683
+
+positive_precision: 0.913402
+positive_recall: 0.893145
+positive_f1: 0.903160
