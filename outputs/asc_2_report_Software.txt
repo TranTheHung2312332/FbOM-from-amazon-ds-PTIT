@@ -1,0 +1,11 @@
+Category: Software
+Total samples: 116627
+High confidence samples: 33271
+Low confidence samples: 83356
+
+High confidence ratio: 0.2853
+
+Sentiment distribution (high confidence):
+Negative ratio: 0.4871
+Neutral ratio: 0.0000
+Positive ratio: 0.5129
