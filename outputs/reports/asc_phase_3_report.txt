@@ -1,0 +1,29 @@
+Office_Products 
+
+BENCHMARK RESULTS — GOLD TEST SET
+  accuracy                  : 0.8693
+  f1_macro                  : 0.6887
+  f1_weighted               : 0.8612
+  loss                      : 1.0307
+  precision_macro           : 0.8196
+  precision_weighted        : 0.8668
+  recall_macro              : 0.6612
+  recall_weighted           : 0.8693
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    negative     0.8017    0.8571    0.8285       217
+     neutral     0.7500    0.2069    0.3243        29
+    positive     0.9070    0.9195    0.9132       435
+
+    accuracy                         0.8693       681
+   macro avg     0.8196    0.6612    0.6887       681
+weighted avg     0.8668    0.8693    0.8612       681
+
+
+Confusion Matrix:
+               pred_negative  pred_neutral  pred_positive
+true_negative            186             1             30
+true_neutral              12             6             11
+true_positive             34             1            400
