@@ -292,6 +292,20 @@ Dự án hiện tập trung vào việc hoàn thiện pipeline ABSA cho dữ li�
 
 ---
 
+## Chạy ứng dụng demo
+
+Model download links:
+- [Gate classifier](https://drive.google.com/drive/folders/1YCF7tB8Waajw2o2C_d6C4eoOIhjzFio0)
+- [ATE](https://drive.google.com/drive/folders/1ERpB4Nxk5wFfCnuAEXihUQXotf12b27Y?usp=sharing)
+- [ASC](https://drive.google.com/drive/folders/1sCsPdONQJa-p3yiGPYgVNWsaWL9x8FmT)
+
+Chạy streamlit app:
+```
+python -m streamlit scripts/streamlit_app.py
+```
+
+---
+
 ## Nhóm thực hiện
 
 Dự án được thực hiện bởi nhóm sinh viên trong khuôn khổ môn học.
