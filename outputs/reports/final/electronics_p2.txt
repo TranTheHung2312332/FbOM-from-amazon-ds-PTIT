@@ -1,0 +1,180 @@
+========================================================================
+FINAL PIPELINE REPORT — Electronics_part2
+Generated      : 2026-05-25 15:47:11
+Gate threshold : 0.7  |  Span threshold : 0.5  |  ASC : argmax
+========================================================================
+
+[1] DATASET
+  Tổng số câu (p2 output)           : 42,796,279
+  Tổng số review ban đầu             :  1,365,189
+  Review có ít nhất 1 aspect         :  1,236,536
+  Review có nhiều hơn 1 aspect       :    990,141
+  Tổng số (câu, aspect) pairs        : 33,243,686
+
+[2] PHÂN PHỐI SENTIMENT — TOÀN BỘ
+  Sentiment       Count     Tỉ lệ
+  -----------------------------------
+  pos        22,724,683    68.36%
+  neu           420,309     1.26%
+  neg        10,098,694    30.38%
+
+[3] PHÂN PHỐI SENTIMENT THEO RATING (1–5)
+sent_label      neg     neu       pos     total   neg_%  neu_%  pos_%
+rating                                                               
+0                 2       0         0         2  100.00   0.00   0.00
+1           3058473   43894    703444   3805811   80.36   1.15  18.48
+2           1505714   50448    686962   2243124   67.13   2.25  30.63
+3           1510866   93074   1181232   2785172   54.25   3.34  42.41
+4           1772684  104776   3666274   5543734   31.98   1.89  66.13
+5           2250955  128117  16486771  18865843   11.93   0.68  87.39
+
+[4] TOP 20 ASPECT XUẤT HIỆN NHIỀU NHẤT
+sent_label           neg    neu     pos    total
+aspect                                          
+sound             172882  23929  846417  1043228
+quality           152829   7181  769819   929829
+price              56608  18990  776508   852106
+sound quality     100195  15869  462646   578710
+camera            121845   6757  395779   524381
+headphones         83522   4088  292099   379709
+value               3680    595  326948   331223
+battery life       79266   6890  241036   327192
+cable              94879   3196  198088   296163
+battery           134536   3916  152590   291042
+keyboard           81304   4325  182582   268211
+screen            118959   3785  137246   259990
+device             77641   2274  176919   256834
+picture            44559   3021  202499   250079
+design             45508   1180  177051   223739
+speaker            44899   3112  172178   220189
+it                 56807   2691  145510   205008
+customer service   46587    275  156886   203748
+fit                29051   2329  170793   202173
+color              33491   1522  165848   200861
+
+[5] TOP 20 ASPECT CÓ NHIỀU POSITIVE NHẤT (theo count)
+sent_label           neg    neu     pos    total
+aspect                                          
+sound             172882  23929  846417  1043228
+price              56608  18990  776508   852106
+quality           152829   7181  769819   929829
+sound quality     100195  15869  462646   578710
+camera            121845   6757  395779   524381
+value               3680    595  326948   331223
+headphones         83522   4088  292099   379709
+battery life       79266   6890  241036   327192
+picture            44559   3021  202499   250079
+cable              94879   3196  198088   296163
+keyboard           81304   4325  182582   268211
+design             45508   1180  177051   223739
+device             77641   2274  176919   256834
+speaker            44899   3112  172178   220189
+fit                29051   2329  170793   202173
+color              33491   1522  165848   200861
+customer service   46587    275  156886   203748
+bag                21216   1690  153729   176635
+battery           134536   3916  152590   291042
+size               25890   2284  151837   180011
+
+[6] TOP 20 ASPECT CÓ NHIỀU NEGATIVE NHẤT (theo count)
+sent_label        neg    neu     pos    total
+aspect                                       
+sound          172882  23929  846417  1043228
+quality        152829   7181  769819   929829
+battery        134536   3916  152590   291042
+camera         121845   6757  395779   524381
+screen         118959   3785  137246   259990
+sound quality  100195  15869  462646   578710
+cable           94879   3196  198088   296163
+headphones      83522   4088  292099   379709
+keyboard        81304   4325  182582   268211
+battery life    79266   6890  241036   327192
+device          77641   2274  176919   256834
+cord            59765   2014   79395   141174
+unit            58983   2288  113903   175174
+it              56807   2691  145510   205008
+price           56608  18990  776508   852106
+volume          53396   3370   40542    97308
+remote          50738   1269   62229   114236
+instructions    50536    736   41630    92902
+speakers        49936   3190  125729   178855
+charger         47632   1146   85420   134198
+
+[7] TOP 20 ASPECT GÂY CHIA RẼ NHẤT  (polar≥10, |pos−neg| nhỏ nhất)
+sent_label   neg  neu  pos  polar  abs_diff
+aspect                                     
+10 kindle      5    0    5     10         0
+128 gb ssd     8    1    8     16         0
+13inch         5    0    5     10         0
+16 gb model    5    0    5     10         0
+169           19    1   19     38         0
+169 ratio      8    0    8     16         0
+1mii           5    0    5     10         0
+1st set        6    0    6     12         0
+2485           6    0    6     12         0
+256 mb         7    0    7     14         0
+2nd camera     9    0    9     18         0
+2x             8    0    8     16         0
+2x lens        5    0    5     10         0
+3 foot cord    7    1    7     14         0
+3 ft cords     5    0    5     10         0
+3 legs         8    0    8     16         0
+3 mm           5    0    5     10         0
+3 tb          10    0   10     20         0
+30 gb          5    0    5     10         0
+30fps          6    1    6     12         0
+
+[8] ĐỘ DÀI CÂU THEO SENTIMENT (ký tự)
+  Sentiment    Avg length      Total length
+  ------------------------------------------
+  pos              85.27     1,937,704,896
+  neu              75.50        31,735,106
+  neg             112.50     1,136,112,610
+
+[9] ASC CONFIDENCE STATISTICS THEO SENTIMENT
+  Sentiment      Mean    Median        Q1        Q3
+  --------------------------------------------------
+  pos         0.9968    1.0000    1.0000    1.0000
+  neu         0.9608    0.9992    0.9858    1.0000
+  neg         0.9924    1.0000    0.9999    1.0000
+
+[10] 10 CÂU NEUTRAL VỚI CONFIDENCE THẤP NHẤT
+------------------------------------------------------------------------
+  [1] conf=0.3364 | rating=1
+      sentence : regular surge protector i thought this [GENERIC_NOUN] was the smart protector for electronics but it is not
+      aspect   : surge protector
+  [2] conf=0.3370 | rating=5
+      sentence : its so easy to hold keeps my phone safe and i love the color
+      aspect   : silicone
+  [3] conf=0.3410 | rating=1
+      sentence : they re as expected and the sound quality is good for me
+      aspect   : headphones
+  [4] conf=0.3442 | rating=3
+      sentence : perfect tablet for kids
+      aspect   : visual aide
+  [5] conf=0.3461 | rating=3
+      sentence : recharges battieries just fine the display is unreadable straight on recharges battieries just fine the display is unrea
+      aspect   : re
+  [6] conf=0.3493 | rating=5
+      sentence : this is a huge ripoff
+      aspect   : reception
+  [7] conf=0.3493 | rating=4
+      sentence : bought these to replace a broken pair from a different brand which only lasted a little over 3 [GENERIC_NOUN] and then w
+      aspect   : main
+  [8] conf=0.3494 | rating=4
+      sentence : well worth investment for cheap noise cancelling functionality i bought this noise canceling headphones 8 [GENERIC_NOUN]
+      aspect   : sound quality
+  [9] conf=0.3501 | rating=4
+      sentence : good sound quality cancellation and enough battery life to last me an entire [GENERIC_NOUN] of work with occasional 15 m
+      aspect   : volume
+  [10] conf=0.3524 | rating=5
+      sentence : the computer cover seems to have held itself well for the last few [GENERIC_NOUN]
+      aspect   : top
+
+========================================================================
+OUTPUT FILES
+  Checkpoint   : /content/drive/MyDrive/last_run/asc_electronic2/inference_results.parquet
+  Report       : /content/drive/MyDrive/last_run/asc_electronic2/final_report.txt
+  Neutral low  : /content/drive/MyDrive/last_run/asc_electronic2/neutral_low_confidence.txt
+  Aspect CSV   : /content/drive/MyDrive/last_run/asc_electronic2/aspect_sentiment_counts.csv
+========================================================================

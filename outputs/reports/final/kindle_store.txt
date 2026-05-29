@@ -1,0 +1,164 @@
+BÁO CÁO THỐNG KÊ KẾT QUẢ PIPELINE P10
+Pipeline: Tiền xử lý -> ATE -> ASC
+
+Cấu hình theo yêu cầu:
+- Gate threshold = 0.7
+- Span threshold = 0.5
+- ASC: dùng argmax, không dùng threshold
+
+Mapping sentiment:
+- 0 = negative / neg
+- 1 = neutral / neu
+- 2 = positive / pos
+
+Lưu ý: Thống kê được tính trên các file parquet đầu ra hiện có trong folder all_parquet.
+
+========================================================================================================================
+1. THỐNG KÊ REVIEW VÀ SENTIMENT THEO CATEGORY
+========================================================================================================================
+    category  num_reviews_initial  num_reviews_has_at_least_1_aspect  num_reviews_more_than_1_aspect  pos_count  neu_count  neg_count  pos_ratio  neu_ratio  neg_ratio  total_aspect_sentiment_rows
+kindle_store             15868499                           15868499                         9128623 31871403.0   203199.0  7640203.0   0.802507   0.005116   0.192377                     39714805
+
+========================================================================================================================
+2. SỐ LƯỢNG VÀ TỈ LỆ POS / NEU / NEG THEO TỪNG RATING
+========================================================================================================================
+    category  rating  pos_count  neu_count  neg_count  pos_ratio  neu_ratio  neg_ratio    total
+kindle_store       0        2.0        0.0        3.0   0.400000   0.000000   0.600000        5
+kindle_store       1   249910.0    10860.0   847018.0   0.225594   0.009803   0.764603  1107788
+kindle_store       2   513308.0    30275.0  1091849.0   0.313867   0.018512   0.667621  1635432
+kindle_store       3  1893691.0    85057.0  1767812.0   0.505448   0.022703   0.471849  3746560
+kindle_store       4  7214918.0    43960.0  1953590.0   0.783169   0.004772   0.212059  9212468
+kindle_store       5 21999574.0    33047.0  1979931.0   0.916170   0.001376   0.082454 24012552
+
+========================================================================================================================
+3. TOP 20 ASPECT XUẤT HIỆN NHIỀU NHẤT THEO CATEGORY
+========================================================================================================================
+    category  rank     aspect   total       pos     neu       neg
+kindle_store     1       book 7032003 5882686.0 46174.0 1103143.0
+kindle_store     2      story 3434136 2931747.0 23229.0  479160.0
+kindle_store     3 characters 2414892 2087468.0  6252.0  321172.0
+kindle_store     4     author 1620798 1275177.0  1636.0  343985.0
+kindle_store     5     series  877679  817783.0  1304.0   58592.0
+kindle_store     6       read  833968  803158.0  5615.0   25195.0
+kindle_store     7      books  694412  592798.0  1824.0   99790.0
+kindle_store     8       plot  599779  434726.0  7639.0  157414.0
+kindle_store     9    writing  496028  384666.0  9166.0  102196.0
+kindle_store    10     ending  439515  227649.0  3683.0  208183.0
+kindle_store    11    stories  303193  262444.0  1430.0   39319.0
+kindle_store    12  storyline  299768  252361.0  2766.0   44641.0
+kindle_store    13  character  295891  238318.0   517.0   57056.0
+kindle_store    14    romance  276149  232518.0  1641.0   41990.0
+kindle_store    15 story line  261027  219613.0  3281.0   38133.0
+kindle_store    16      novel  251016  211952.0   664.0   38400.0
+kindle_store    17     action  210307  190117.0   542.0   19648.0
+kindle_store    18     reader  202771  156585.0   328.0   45858.0
+kindle_store    19     writer  198412  172850.0   220.0   25342.0
+kindle_store    20  chemistry  175393  165482.0   175.0    9736.0
+
+========================================================================================================================
+4. TOP 20 ASPECT TÍCH CỰC NHẤT VÀ TIÊU CỰC NHẤT THEO COUNT
+========================================================================================================================
+    category         type  rank         aspect       pos     neu       neg   total
+kindle_store top_negative     1           book 5882686.0 46174.0 1103143.0 7032003
+kindle_store top_negative     2          story 2931747.0 23229.0  479160.0 3434136
+kindle_store top_negative     3         author 1275177.0  1636.0  343985.0 1620798
+kindle_store top_negative     4     characters 2087468.0  6252.0  321172.0 2414892
+kindle_store top_negative     5         ending  227649.0  3683.0  208183.0  439515
+kindle_store top_negative     6           plot  434726.0  7639.0  157414.0  599779
+kindle_store top_negative     7        writing  384666.0  9166.0  102196.0  496028
+kindle_store top_negative     8          books  592798.0  1824.0   99790.0  694412
+kindle_store top_negative     9         series  817783.0  1304.0   58592.0  877679
+kindle_store top_negative    10      character  238318.0   517.0   57056.0  295891
+kindle_store top_negative    11 main character   57520.0   352.0   49879.0  107751
+kindle_store top_negative    12        editing   17767.0  1421.0   48617.0   67805
+kindle_store top_negative    13         reader  156585.0   328.0   45858.0  202771
+kindle_store top_negative    14      storyline  252361.0  2766.0   44641.0  299768
+kindle_store top_negative    15        romance  232518.0  1641.0   41990.0  276149
+kindle_store top_negative    16        stories  262444.0  1430.0   39319.0  303193
+kindle_store top_negative    17       dialogue   68701.0   423.0   38778.0  107902
+kindle_store top_negative    18          novel  211952.0   664.0   38400.0  251016
+kindle_store top_negative    19     story line  219613.0  3281.0   38133.0  261027
+kindle_store top_negative    20        heroine   76261.0   445.0   37561.0  114267
+kindle_store top_positive     1           book 5882686.0 46174.0 1103143.0 7032003
+kindle_store top_positive     2          story 2931747.0 23229.0  479160.0 3434136
+kindle_store top_positive     3     characters 2087468.0  6252.0  321172.0 2414892
+kindle_store top_positive     4         author 1275177.0  1636.0  343985.0 1620798
+kindle_store top_positive     5         series  817783.0  1304.0   58592.0  877679
+kindle_store top_positive     6           read  803158.0  5615.0   25195.0  833968
+kindle_store top_positive     7          books  592798.0  1824.0   99790.0  694412
+kindle_store top_positive     8           plot  434726.0  7639.0  157414.0  599779
+kindle_store top_positive     9        writing  384666.0  9166.0  102196.0  496028
+kindle_store top_positive    10        stories  262444.0  1430.0   39319.0  303193
+kindle_store top_positive    11      storyline  252361.0  2766.0   44641.0  299768
+kindle_store top_positive    12      character  238318.0   517.0   57056.0  295891
+kindle_store top_positive    13        romance  232518.0  1641.0   41990.0  276149
+kindle_store top_positive    14         ending  227649.0  3683.0  208183.0  439515
+kindle_store top_positive    15     story line  219613.0  3281.0   38133.0  261027
+kindle_store top_positive    16          novel  211952.0   664.0   38400.0  251016
+kindle_store top_positive    17         action  190117.0   542.0   19648.0  210307
+kindle_store top_positive    18         writer  172850.0   220.0   25342.0  198412
+kindle_store top_positive    19      chemistry  165482.0   175.0    9736.0  175393
+kindle_store top_positive    20         reader  156585.0   328.0   45858.0  202771
+
+========================================================================================================================
+5. TOP 20 ASPECT GÂY CHIA RẼ NHẤT
+========================================================================================================================
+    category  rank            aspect   pos  neu   neg  polar  abs_pos_neg_diff  total
+kindle_store     1              slow 265.0 10.0 265.0  530.0               0.0    540
+kindle_store     2        reality tv  92.0  0.0  92.0  184.0               0.0    184
+kindle_store     3            armada  82.0  3.0  82.0  164.0               0.0    167
+kindle_store     4             shame  79.0  0.0  79.0  158.0               0.0    158
+kindle_store     5  first person pov  75.0  3.0  75.0  150.0               0.0    153
+kindle_store     6        fanfiction  73.0  0.0  73.0  146.0               0.0    146
+kindle_store     7     bedroom scene  70.0  1.0  70.0  140.0               0.0    141
+kindle_store     8  romantic subplot  54.0  2.0  54.0  108.0               0.0    110
+kindle_store     9       first pages  53.0  0.0  53.0  106.0               0.0    106
+kindle_store    10            forced  50.0  0.0  50.0  100.0               0.0    100
+kindle_store    11           workers  50.0  0.0  50.0  100.0               0.0    100
+kindle_store    12     clarification  49.0  2.0  49.0   98.0               0.0    100
+kindle_store    13              cuts  46.0  1.0  46.0   92.0               0.0     93
+kindle_store    14      angst levels  41.0  1.0  41.0   82.0               0.0     83
+kindle_store    15 paperback edition  40.0  1.0  40.0   80.0               0.0     81
+kindle_store    16        occurrence  40.0  0.0  40.0   80.0               0.0     80
+kindle_store    17            rulers  37.0  1.0  37.0   74.0               0.0     75
+kindle_store    18     comparison to  36.0  0.0  36.0   72.0               0.0     72
+kindle_store    19        suspicions  36.0  0.0  36.0   72.0               0.0     72
+kindle_store    20       peace talks  34.0  1.0  34.0   68.0               0.0     69
+
+========================================================================================================================
+6. ĐỘ DÀI CÂU TRUNG BÌNH VÀ TỔNG ĐỘ DÀI THEO SENTIMENT
+========================================================================================================================
+    category sentiment  total_char_length  num_sentences  avg_char_length
+kindle_store       neg        857397514.0        7640203       112.221824
+kindle_store       neu         14306330.0         203199        70.405514
+kindle_store       pos       3009446395.0       31871403        94.424660
+
+========================================================================================================================
+7. THỐNG KÊ CONFIDENCE CỦA ASC MODEL THEO SENTIMENT
+========================================================================================================================
+    category sentiment  mean_confidence  median_confidence  q1_confidence  q3_confidence  num_samples
+kindle_store       neg         0.987899           0.999957       0.999531       0.999964      7640203
+kindle_store       neu         0.965916           0.999759       0.991467       0.999985       203199
+kindle_store       pos         0.997149           0.999970       0.999963       0.999972     31871403
+
+========================================================================================================================
+8. 10 CÂU NEUTRAL CÓ CONFIDENCE THẤP NHẤT
+========================================================================================================================
+    category  review_id  sentence_id  rating                aspect sentiment  confidence                                                                                                                             sentence_text
+kindle_store    1975255            5       3 character development       neu    0.337828 character development is not [GENERIC_NOUN] that can be discussed here due to space constraints but they were adequate for what they were
+kindle_store   20993726            1       4                  book       neu    0.343119                                                                               i had no real expectations be it good or bad about the book
+kindle_store    1935657            1       5             page turn       neu    0.344268                                                                                   terrific full of details but not overdone a page turner
+kindle_store   15268153            1       4                 story       neu    0.346148                                                                           ok story could use more twists lots of combat and snarky dialog
+kindle_store   16982338            4       5                     m       neu    0.347473                                                                                            miko slightly cray but loyal to those he loves
+kindle_store   19187802            1       4            characters       neu    0.348682                                                                        relatable characters flawed but redeemable endearing yet imperfect
+kindle_store    3490793            1       3              interest       neu    0.349379                                                                          some interest in the beginning but declined as the book moved on
+kindle_store   24114978            3       4               motives       neu    0.350553                                                                        the characters are all believable their motives not necessarily so
+kindle_store   11215210            1       3                  hero       neu    0.351888                                       although a [GENERIC_NOUN] vulgar and the lack of a decent plot at least the hero was not a manwhore
+kindle_store    2202803           12       5              language       neu    0.352359           some mature language but no graphic situations make this a book for grades 9 but adult readers of ya will enjoy it just as much
+
+========================================================================================================================
+9. FILE ĐẦU RA
+========================================================================================================================
+Báo cáo TXT: /content/drive/MyDrive/p10kpdl/report_outputs/p10_statistics_report.txt
+File 10 câu neutral confidence thấp nhất: /content/drive/MyDrive/p10kpdl/report_outputs/low_confidence_neutral_examples.txt
+File CSV toàn bộ aspect sentiment count: /content/drive/MyDrive/p10kpdl/report_outputs/all_aspect_sentiment_counts.csv

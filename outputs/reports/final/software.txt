@@ -1,0 +1,134 @@
+Category: software
+Original reviews: 4973519
+Reviews with >=1 aspect: 2580283
+Reviews with >1 aspect: 562447
+
+Sentiment distribution:
+positive: 2098778 (0.6550)
+neutral: 23635 (0.0074)
+negative: 1081969 (0.3377)
+
+Per rating sentiment:
+
+Rating 1
+positive: 72576 (0.1422)
+neutral: 2891 (0.0057)
+negative: 434988 (0.8522)
+
+Rating 2
+positive: 57975 (0.2639)
+neutral: 3120 (0.0142)
+negative: 158601 (0.7219)
+
+Rating 3
+positive: 143805 (0.4389)
+neutral: 8821 (0.0269)
+negative: 175001 (0.5341)
+
+Rating 4
+positive: 448756 (0.7202)
+neutral: 5092 (0.0082)
+negative: 169256 (0.2716)
+
+Rating 5
+positive: 1375666 (0.9030)
+neutral: 3711 (0.0024)
+negative: 144123 (0.0946)
+
+Top 20 frequent aspects:
+game | pos=605788 neu=4014 neg=110891
+app | pos=208400 neu=2326 neg=95358
+graphics | pos=51318 neu=743 neg=6898
+games | pos=37052 neu=291 neg=11858
+software | pos=20945 neu=354 neg=22000
+program | pos=21441 neu=209 neg=18235
+puzzles | pos=23468 neu=166 neg=5073
+it | pos=16477 neu=140 neg=5383
+music | pos=13188 neu=254 neg=4460
+levels | pos=8809 neu=68 neg=7820
+ads | pos=2932 neu=361 neg=13240
+price | pos=12588 neu=289 neg=3549
+update | pos=3368 neu=72 neg=12033
+pictures | pos=9051 neu=72 neg=3579
+interface | pos=6884 neu=89 neg=4613
+kindle | pos=4326 neu=59 neg=7014
+apps | pos=5852 neu=100 neg=4741
+features | pos=6922 neu=28 neg=3483
+controls | pos=4350 neu=109 neg=5551
+shows | pos=6946 neu=45 neg=2650
+
+Top 20 positive aspects:
+game | pos=605788
+app | pos=208400
+graphics | pos=51318
+games | pos=37052
+puzzles | pos=23468
+program | pos=21441
+software | pos=20945
+it | pos=16477
+music | pos=13188
+price | pos=12588
+pictures | pos=9051
+levels | pos=8809
+shows | pos=6946
+features | pos=6922
+interface | pos=6884
+characters | pos=5911
+apps | pos=5852
+colors | pos=5708
+story | pos=5564
+gameplay | pos=5410
+
+Top 20 negative aspects:
+game | neg=110891
+app | neg=95358
+software | neg=22000
+program | neg=18235
+ads | neg=13240
+update | neg=12033
+games | neg=11858
+levels | neg=7820
+screen | neg=7804
+kindle | neg=7014
+graphics | neg=6898
+controls | neg=5551
+it | neg=5383
+puzzles | neg=5073
+customer service | neg=4789
+apps | neg=4741
+interface | neg=4613
+support | neg=4547
+music | neg=4460
+commercials | neg=4421
+
+Top controversial aspects:
+decorate | pos=6 neg=6
+jumper | pos=5 neg=5
+architect | pos=5 neg=5
+march | pos=5 neg=5
+echo device | pos=5 neg=5
+student edition | pos=5 neg=5
+password security | pos=5 neg=5
+klowdtv | pos=6 neg=6
+bingo coins | pos=5 neg=5
+amp34find | pos=5 neg=5
+quickbooks support | pos=6 neg=6
+smurf berries | pos=9 neg=9
+wire | pos=6 neg=6
+soldiers | pos=6 neg=6
+bills | pos=39 neg=39
+download service | pos=6 neg=6
+conversion to | pos=5 neg=5
+movie lineup | pos=5 neg=5
+markers | pos=10 neg=10
+mobile security | pos=8 neg=8
+
+Sentence length statistics:
+positive: mean=80.82 total=169623023
+neutral: mean=59.82 total=1413934
+negative: mean=101.96 total=110315397
+
+Confidence statistics:
+positive: mean=0.9961 median=1.0000 Q1=0.9999 Q3=1.0000
+neutral: mean=0.9618 median=0.9988 Q1=0.9849 Q3=1.0000
+negative: mean=0.9923 median=1.0000 Q1=0.9999 Q3=1.0000

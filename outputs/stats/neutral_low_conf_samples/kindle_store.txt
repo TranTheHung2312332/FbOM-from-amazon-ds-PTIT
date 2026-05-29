@@ -1,0 +1,113 @@
+10 CÂU CÓ NHÃN NEUTRAL VỚI CONFIDENCE THẤP NHẤT
+====================================================================================================
+
+Example 1
+Category: kindle_store
+Review ID: 1975255
+Sentence ID: 5
+Rating: 3
+Aspect: character development
+Sentiment: neu
+Confidence: 0.337828
+Sentence: character development is not [GENERIC_NOUN] that can be discussed here due to space constraints but they were adequate for what they were
+----------------------------------------------------------------------------------------------------
+
+Example 2
+Category: kindle_store
+Review ID: 20993726
+Sentence ID: 1
+Rating: 4
+Aspect: book
+Sentiment: neu
+Confidence: 0.343119
+Sentence: i had no real expectations be it good or bad about the book
+----------------------------------------------------------------------------------------------------
+
+Example 3
+Category: kindle_store
+Review ID: 1935657
+Sentence ID: 1
+Rating: 5
+Aspect: page turn
+Sentiment: neu
+Confidence: 0.344268
+Sentence: terrific full of details but not overdone a page turner
+----------------------------------------------------------------------------------------------------
+
+Example 4
+Category: kindle_store
+Review ID: 15268153
+Sentence ID: 1
+Rating: 4
+Aspect: story
+Sentiment: neu
+Confidence: 0.346148
+Sentence: ok story could use more twists lots of combat and snarky dialog
+----------------------------------------------------------------------------------------------------
+
+Example 5
+Category: kindle_store
+Review ID: 16982338
+Sentence ID: 4
+Rating: 5
+Aspect: m
+Sentiment: neu
+Confidence: 0.347473
+Sentence: miko slightly cray but loyal to those he loves
+----------------------------------------------------------------------------------------------------
+
+Example 6
+Category: kindle_store
+Review ID: 19187802
+Sentence ID: 1
+Rating: 4
+Aspect: characters
+Sentiment: neu
+Confidence: 0.348682
+Sentence: relatable characters flawed but redeemable endearing yet imperfect
+----------------------------------------------------------------------------------------------------
+
+Example 7
+Category: kindle_store
+Review ID: 3490793
+Sentence ID: 1
+Rating: 3
+Aspect: interest
+Sentiment: neu
+Confidence: 0.349379
+Sentence: some interest in the beginning but declined as the book moved on
+----------------------------------------------------------------------------------------------------
+
+Example 8
+Category: kindle_store
+Review ID: 24114978
+Sentence ID: 3
+Rating: 4
+Aspect: motives
+Sentiment: neu
+Confidence: 0.350553
+Sentence: the characters are all believable their motives not necessarily so
+----------------------------------------------------------------------------------------------------
+
+Example 9
+Category: kindle_store
+Review ID: 11215210
+Sentence ID: 1
+Rating: 3
+Aspect: hero
+Sentiment: neu
+Confidence: 0.351888
+Sentence: although a [GENERIC_NOUN] vulgar and the lack of a decent plot at least the hero was not a manwhore
+----------------------------------------------------------------------------------------------------
+
+Example 10
+Category: kindle_store
+Review ID: 2202803
+Sentence ID: 12
+Rating: 5
+Aspect: language
+Sentiment: neu
+Confidence: 0.352359
+Sentence: some mature language but no graphic situations make this a book for grades 9 but adult readers of ya will enjoy it just as much
+----------------------------------------------------------------------------------------------------
+

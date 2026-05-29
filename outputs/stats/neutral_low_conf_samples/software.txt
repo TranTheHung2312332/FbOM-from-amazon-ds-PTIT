@@ -1,0 +1,40 @@
+Sentence: its an 0k hamasbr its anbr ok game but not my favorite
+Aspect: game
+Confidence: 0.3560
+
+Sentence: if the game was totally free i could tolerate the pop up window
+Aspect: pop up window
+Confidence: 0.3566
+
+Sentence: double up gets in the [GENERIC_NOUN] the game is basically ok but it could be better
+Aspect: game
+Confidence: 0.3703
+
+Sentence: a small ad on the bottom of the game does not detract from the fun
+Aspect: ad
+Confidence: 0.3723
+
+Sentence: love it its alright the graphics need some improvement though
+Aspect: graphics
+Confidence: 0.3744
+
+Sentence: an adequate mtg clone without the deckbuilding depth and baffling design choices such as irritating goofy character voices that cant be turned off
+Aspect: mtg clone
+Confidence: 0.3865
+
+Sentence: minecraft on the computer is [GENERIC_NOUN] better i wanted to meet my friend on minecraft but the realms is not working so i guess this app is ok
+Aspect: app
+Confidence: 0.3905
+
+Sentence: ok game this game is ok my nieces nephews really thought it was a [GENERIC_NOUN] hard for them so it did not keep their intrest
+Aspect: game
+Confidence: 0.4107
+
+Sentence: br only [GENERIC_NOUN] mode of game play even though this mode is very funbr small onscreen advertisements but theyre out of the [GENERIC_NOUN] and dont interrupt game play so theyre okaybr br i reviewed [GENERIC_NOUN] 0
+Aspect: game play
+Confidence: 0.4118
+
+Sentence: br br developers only con is i keep accidentally hitting the bomb button and wasting my bombs
+Aspect: developers
+Confidence: 0.4224
+

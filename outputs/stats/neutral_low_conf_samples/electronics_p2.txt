@@ -1,0 +1,43 @@
+10 Câu Neutral — Confidence Thấp Nhất (Error Analysis)
+========================================================================
+
+[1] confidence = 0.3364  |  rating = 1
+    sentence : regular surge protector i thought this [GENERIC_NOUN] was the smart protector for electronics but it is not
+    aspect   : surge protector
+
+[2] confidence = 0.3370  |  rating = 5
+    sentence : its so easy to hold keeps my phone safe and i love the color
+    aspect   : silicone
+
+[3] confidence = 0.3410  |  rating = 1
+    sentence : they re as expected and the sound quality is good for me
+    aspect   : headphones
+
+[4] confidence = 0.3442  |  rating = 3
+    sentence : perfect tablet for kids
+    aspect   : visual aide
+
+[5] confidence = 0.3461  |  rating = 3
+    sentence : recharges battieries just fine the display is unreadable straight on recharges battieries just fine the display is unreadable straight on
+    aspect   : re
+
+[6] confidence = 0.3493  |  rating = 5
+    sentence : this is a huge ripoff
+    aspect   : reception
+
+[7] confidence = 0.3493  |  rating = 4
+    sentence : bought these to replace a broken pair from a different brand which only lasted a little over 3 [GENERIC_NOUN] and then would nt charge anymore
+    aspect   : main
+
+[8] confidence = 0.3494  |  rating = 4
+    sentence : well worth investment for cheap noise cancelling functionality i bought this noise canceling headphones 8 [GENERIC_NOUN] ago and today i am still using them
+    aspect   : sound quality
+
+[9] confidence = 0.3501  |  rating = 4
+    sentence : good sound quality cancellation and enough battery life to last me an entire [GENERIC_NOUN] of work with occasional 15 minute charging periods during breaks
+    aspect   : volume
+
+[10] confidence = 0.3524  |  rating = 5
+    sentence : the computer cover seems to have held itself well for the last few [GENERIC_NOUN]
+    aspect   : top
+

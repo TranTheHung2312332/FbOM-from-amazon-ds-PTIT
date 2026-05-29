@@ -1,0 +1,43 @@
+10 Câu Neutral — Confidence Thấp Nhất (Error Analysis)
+========================================================================
+
+[1] confidence = 0.3343  |  rating = 4
+    sentence : the base plate should either be heavier or deeper to provide better tipping prevention if not mounting to your table top
+    aspect   : base plate
+
+[2] confidence = 0.3404  |  rating = 2
+    sentence : [DOMAIN_NOISE] featured electronics should last longer than 18 [GENERIC_NOUN] 2 [GENERIC_NOUN]
+    aspect   : electronics
+
+[3] confidence = 0.3411  |  rating = 4
+    sentence : it would have been nice if the height was adjustable
+    aspect   : height
+
+[4] confidence = 0.3474  |  rating = 5
+    sentence : cap fits greaat don t go with the offbrand buy the nikon caps so that they fit tight and stay on
+    aspect   : cap
+
+[5] confidence = 0.3479  |  rating = 4
+    sentence : br br xm [GENERIC_NOUN] br the xm took 2 attempts to get the subscription loaded but it has been fine since
+    aspect   : xm
+
+[6] confidence = 0.3487  |  rating = 2
+    sentence : audio quality is not too bad for these buds not the greatest but they get the job done
+    aspect   : buds
+
+[7] confidence = 0.3488  |  rating = 5
+    sentence : additionally for the price of 130 if you have the bass slider low or off i was also pleasantly surprised by the overall sound profile making great performers for situations where you don t want a subwoofer
+    aspect   : bass slider
+
+[8] confidence = 0.3489  |  rating = 5
+    sentence : the only [GENERIC_NOUN] i wish for is more base but with the size you would have to go bigger
+    aspect   : base
+
+[9] confidence = 0.3513  |  rating = 4
+    sentence : br br they only [GENERIC_NOUN] that lag of is 5g wifi support
+    aspect   : wifi support
+
+[10] confidence = 0.3542  |  rating = 4
+    sentence : br br the most disappointing [GENERIC_NOUN] about the samsung bd e5400 is the fact that you can t install apps on it
+    aspect   : s
+
