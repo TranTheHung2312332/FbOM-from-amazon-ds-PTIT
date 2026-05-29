@@ -21,13 +21,7 @@ ASC Phase 2 Report — kindle_store
   = Final high confidence    :   23,845,393  (49.67% cua tong samples)
   Final low confidence       :      209,646
 
-[Sentiment Distribution — aspect level, final high confidence]
-  Total aspects   :   30,822,868
-  Positive        :   25,338,838  (82.21%)
-  Neutral         :      100,940  (0.33%)
-  Negative        :    5,383,090  (17.46%)
-
-[Output Files]
-  High: /content/drive/MyDrive/data_p4_kpdl/asc_final_phase2/high_confidence_samples_kindle_store.parquet
-  Low : /content/drive/MyDrive/data_p4_kpdl/asc_final_phase2/low_confidence_samples_kindle_store.parquet
-============================================================
+[Sentiment Distribution — aspect level, high confidence]
+  Positive        :   82.21%
+  Neutral         :   0.33%
+  Negative        :   17.46%

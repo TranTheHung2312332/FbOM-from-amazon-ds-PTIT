@@ -1,0 +1,69 @@
+#1
+category: office_products
+aspect: buttons
+asc_confidence: 0.343284
+rating: 3.0
+sentence: the buttons are soft rubber but seem to work okay so far
+
+#2
+category: office_products
+aspect: of
+asc_confidence: 0.346171
+rating: 5.0
+sentence: although some of the edges of the mat do curl up just a little [GENERIC_NOUN] its really not that bad97 of the mat lays perfectly flat whether or not [GENERIC_NOUN] is on top of it and its not that pronounced a curl
+
+#3
+category: office_products
+aspect: pen
+asc_confidence: 0.347249
+rating: 5.0
+sentence: the pen is a [GENERIC_NOUN] light but well balanced
+
+#4
+category: office_products
+aspect: nib
+asc_confidence: 0.349795
+rating: 5.0
+sentence: the pen itself has just the right amount of weight and is made mostly of metal with the exception of where the nib connects to the barrel plastic
+
+#5
+category: office_products
+aspect: quality
+asc_confidence: 0.350234
+rating: 3.0
+sentence: meh quality cheap but had many pads with defects on many pages including smeared ink double or uneven lines and significantly short pages
+
+#6
+category: office_products
+aspect: toner
+asc_confidence: 0.355812
+rating: 1.0
+sentence: toner arrived with no ink have bought this brand before and was fine
+
+#7
+category: office_products
+aspect: points
+asc_confidence: 0.356693
+rating: 3.0
+sentence: fine points skip skips or are hard to read
+
+#8
+category: office_products
+aspect: pen
+asc_confidence: 0.358765
+rating: 3.0
+sentence: the pen has a little weight to it but the cap and the body itself feels a [GENERIC_NOUN] cheap
+
+#9
+category: office_products
+aspect: sleeves
+asc_confidence: 0.359698
+rating: 5.0
+sentence: the sleeves are normal plastic photo sleeves and dont add too much of a glare and arent textured like some cheaper portfolios are
+
+#10
+category: office_products
+aspect: printer paper
+asc_confidence: 0.363053
+rating: 5.0
+sentence: its thinner than printer paper but a little thicker than the ruled paper youd buy at say walmart

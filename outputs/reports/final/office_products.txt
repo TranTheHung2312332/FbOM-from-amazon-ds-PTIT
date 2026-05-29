@@ -1,0 +1,142 @@
+P10 FINAL PIPELINE REPORT
+
+Category: office_products
+Gate threshold: 0.7
+Span threshold: 0.5
+ASC threshold: None, use argmax only
+
+[1] Review/Sentence overview
+- Sentence rows input: 13,915,549
+- Sentences with at least 1 aspect: 8,320,961
+- Sentences with more than 1 aspect: 1,778,229
+- review_id not found, review-level stats approximated by sentence-level stats only
+
+[2] Sentiment distribution overall
+- pos: 5,555,349 (0.539957)
+- neu: 104,535 (0.010160)
+- neg: 4,628,622 (0.449883)
+
+[3] Sentiment distribution by rating
+sentiment      neg    neu      pos
+rating                            
+1.0        1181606  12140   151600
+2.0         579371  13383   149979
+3.0         659019  26199   295741
+4.0         752869  24016   775990
+5.0        1455757  28797  4182039
+
+Rate by rating:
+sentiment       neg       neu       pos
+rating                                 
+1.0        0.878292  0.009024  0.112685
+2.0        0.780053  0.018019  0.201929
+3.0        0.671811  0.026708  0.301482
+4.0        0.484823  0.015466  0.499712
+5.0        0.256902  0.005082  0.738016
+
+[4] Top 20 most frequent aspects with pos/neu/neg count
+       aspect    pos  neu    neg  total
+      printer  98536 2366 166260 267162
+      quality 182441 3602  80394 266437
+        price 163720 4372  52309 220401
+          ink  88695 1929 124968 215592
+         pens 125062 1464  73201 199727
+       colors 124268 1214  61516 186998
+          pen  92760 1340  59588 153688
+        paper  75716 2742  67836 146294
+        color  64018 1557  45541 111116
+         size  78516 1163  25193 104872
+        pages  39522  770  43812  84104
+   cartridges  34050  601  49129  83780
+        cards  56025  661  23170  79856
+      planner  57517  237  18285  76039
+        chair  39333  945  29746  70024
+print quality  41908 2006  20135  64049
+     calendar  44443  448  18290  63181
+        value  49999  221   9778  59998
+       labels  34029  715  24601  59345
+         tape  24997  732  33058  58787
+
+[5] Top 20 most positive aspects by count
+       aspect    pos  neu    neg
+      quality 182441 3602  80394
+        price 163720 4372  52309
+         pens 125062 1464  73201
+       colors 124268 1214  61516
+      printer  98536 2366 166260
+          pen  92760 1340  59588
+          ink  88695 1929 124968
+         size  78516 1163  25193
+        paper  75716 2742  67836
+        color  64018 1557  45541
+      planner  57517  237  18285
+        cards  56025  661  23170
+        value  49999  221   9778
+     calendar  44443  448  18290
+print quality  41908 2006  20135
+        pages  39522  770  43812
+        chair  39333  945  29746
+       design  39070  276  17234
+   cartridges  34050  601  49129
+       labels  34029  715  24601
+
+[6] Top 20 most negative aspects by count
+      aspect    pos  neu    neg
+     printer  98536 2366 166260
+         ink  88695 1929 124968
+     quality 182441 3602  80394
+        pens 125062 1464  73201
+       paper  75716 2742  67836
+      colors 124268 1214  61516
+         pen  92760 1340  59588
+       price 163720 4372  52309
+  cartridges  34050  601  49129
+       color  64018 1557  45541
+       pages  39522  770  43812
+   cartridge  15520  553  38220
+        tape  24997  732  33058
+       chair  39333  945  29746
+     markers  27961  599  26850
+        size  78516 1163  25193
+      labels  34029  715  24601
+       cards  56025  661  23170
+       phone  27485  989  23092
+instructions  11353  276  21183
+
+[7] Top 20 divisive aspects
+          aspect  pos  neg  neu  polar  pos_neg_gap
+           leaks  239  239   13    478            0
+           cubes  159  159    1    318            0
+      production  153  153    3    306            0
+            open  145  145    0    290            0
+        versions  114  114    1    228            0
+        elements  108  108    1    216            0
+        captions   90   90    1    180            0
+   cross refills   76   76    1    152            0
+      conclusion   71   71    5    142            0
+            cake   70   70    0    140            0
+         suckers   68   68    0    136            0
+color correction   65   65    0    130            0
+          vacuum   64   64    0    128            0
+           combs   55   55    2    110            0
+       answering   54   54    1    108            0
+             low   52   52    1    104            0
+          sealer   49   49    3     98            0
+    announcement   48   48    2     96            0
+           taper   48   48    1     96            0
+         bundles   47   47    1     94            0
+
+[8] Sentence length by sentiment
+                 mean        sum    count
+sentiment                                
+neg        101.047923  467712640  4628622
+neu         70.270780    7345756   104535
+pos         87.168782  484253008  5555349
+
+[9] ASC confidence stats by sentiment
+               mean    median        q1        q3    count
+sentiment                                                 
+neg        0.933440  0.999948  0.844984  0.999964  4628622
+neu        0.961140  0.999456  0.987246  0.999978   104535
+pos        0.996229  0.999968  0.999957  0.999971  5555349
+
