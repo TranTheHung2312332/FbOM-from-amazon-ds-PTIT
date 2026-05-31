@@ -86,10 +86,130 @@ def display_probability_dict(probabilities: list[float], labels: list[str]) -> d
     }
 
 
+def predict_ate_with_token_probabilities(
+    sentence: str,
+    tokenizer,
+    model,
+    device,
+    max_length: int,
+) -> dict[str, Any]:
+    tokens, offsets = bm.tokenize_words_with_offsets(sentence)
+    if not tokens:
+        return {
+            "tokens": [],
+            "offsets": [],
+            "labels": [],
+            "token_confidences": [],
+            "token_probabilities": [],
+            "raw_spans": [],
+        }
+
+    enc = tokenizer(
+        tokens,
+        is_split_into_words=True,
+        truncation=True,
+        max_length=max_length,
+        return_tensors="pt",
+    )
+    word_ids = enc.word_ids()
+    enc_on_device = bm.move_batch_to_device(enc, device)
+
+    with bm.torch.no_grad():
+        logits = model(**enc_on_device).logits[0]
+        probs = bm.torch.softmax(logits, dim=-1).detach().cpu().numpy()
+        pred_ids = bm.np.argmax(probs, axis=-1)
+
+    id2label = {int(idx): label for idx, label in model.config.id2label.items()}
+    word_labels = ["O"] * len(tokens)
+    word_confidences = [0.0] * len(tokens)
+    word_probabilities = [
+        {label: 0.0 for label in id2label.values()}
+        for _ in tokens
+    ]
+    seen_word_ids = set()
+
+    for token_idx, word_id in enumerate(word_ids):
+        if word_id is None or word_id in seen_word_ids or word_id >= len(tokens):
+            continue
+        seen_word_ids.add(word_id)
+
+        pred_id = int(pred_ids[token_idx])
+        word_labels[word_id] = id2label[pred_id]
+        word_confidences[word_id] = float(probs[token_idx, pred_id])
+        word_probabilities[word_id] = {
+            id2label[label_id]: float(probs[token_idx, label_id])
+            for label_id in sorted(id2label)
+        }
+
+    raw_spans = decode_spans_from_labels(tokens, offsets, word_labels, word_confidences)
+    return {
+        "tokens": tokens,
+        "offsets": offsets,
+        "labels": word_labels,
+        "token_confidences": word_confidences,
+        "token_probabilities": word_probabilities,
+        "raw_spans": raw_spans,
+    }
+
+
+def aspect_probability(token_probs: dict[str, float]) -> float:
+    return float(token_probs.get("B-ASP", 0.0)) + float(token_probs.get("I-ASP", 0.0))
+
+
+def decode_spans_from_labels(
+    tokens: list[str],
+    offsets: list[tuple[int, int]],
+    labels: list[str],
+    confidences: list[float],
+) -> list[bm.PredictedAspect]:
+    decoded_spans = bm.decode_bio_spans(tokens, labels, confidences)
+    spans = []
+    for span in decoded_spans:
+        start_token = int(span["start_token"])
+        end_token = int(span["end_token"])
+        spans.append(
+            bm.PredictedAspect(
+                term=str(span["aspect"]),
+                start=offsets[start_token][0] if start_token < len(offsets) else None,
+                end=offsets[end_token][1] if end_token < len(offsets) else None,
+                confidence=float(span["confidence"]),
+                start_token=start_token,
+                end_token=end_token,
+            )
+        )
+    return spans
+
+
+def apply_aspect_threshold(
+    tokens: list[str],
+    offsets: list[tuple[int, int]],
+    token_probabilities: list[dict[str, float]],
+    threshold: float,
+) -> tuple[list[str], list[float], list[bm.PredictedAspect]]:
+    labels = []
+    confidences = []
+    previous_is_aspect = False
+
+    for token_probs in token_probabilities:
+        probability = aspect_probability(token_probs)
+        if probability >= threshold:
+            confidences.append(probability)
+            labels.append("I-ASP" if previous_is_aspect else "B-ASP")
+            previous_is_aspect = True
+        else:
+            confidences.append(1.0 - probability)
+            labels.append("O")
+            previous_is_aspect = False
+
+    return labels, confidences, decode_spans_from_labels(tokens, offsets, labels, confidences)
+
+
 def run_pipeline(
     sentence: str,
     use_gate: bool,
     gate_threshold: float,
+    use_aspect_threshold: bool,
+    aspect_threshold: float,
     gate_model_path: str,
     ate_model_path: str,
     asc_model_path: str,
@@ -113,9 +233,16 @@ def run_pipeline(
         },
         "ate": {
             "ran": False,
+            "mode": "threshold" if use_aspect_threshold else "argmax_bio",
+            "aspect_threshold": aspect_threshold,
             "tokens": [],
             "labels": [],
             "token_confidences": [],
+            "argmax_labels": [],
+            "argmax_confidences": [],
+            "token_probabilities": [],
+            "aspect_probabilities": [],
+            "raw_spans": [],
             "spans": [],
         },
         "asc": [],
@@ -147,24 +274,51 @@ def run_pipeline(
             return result
 
     ate_tokenizer, ate_model = load_token_model(ate_model_path, device_name)
-    ate_output = bm.predict_ate(
-        [sentence],
+    ate_output = predict_ate_with_token_probabilities(
+        sentence,
         ate_tokenizer,
         ate_model,
         device,
-        DEMO_BATCH_SIZE,
         max_length,
-    )[0]
+    )
+    tokens = ate_output["tokens"]
+    offsets = ate_output["offsets"]
+    token_probabilities = ate_output.get("token_probabilities", [])
+    aspect_probabilities = [aspect_probability(probs) for probs in token_probabilities]
+
+    argmax_labels = ate_output["labels"]
+    argmax_confidences = ate_output["token_confidences"]
+    argmax_spans = list(ate_output["raw_spans"])
+
+    if use_aspect_threshold:
+        final_labels, final_confidences, final_spans = apply_aspect_threshold(
+            tokens,
+            offsets,
+            token_probabilities,
+            aspect_threshold,
+        )
+    else:
+        final_labels = argmax_labels
+        final_confidences = argmax_confidences
+        final_spans = argmax_spans
+
     result["ate"] = {
         "ran": True,
-        "tokens": ate_output["tokens"],
-        "offsets": ate_output["offsets"],
-        "labels": ate_output["labels"],
-        "token_confidences": ate_output["token_confidences"],
-        "spans": [bm.asdict(span) for span in ate_output["raw_spans"]],
+        "mode": "threshold" if use_aspect_threshold else "argmax_bio",
+        "aspect_threshold": aspect_threshold,
+        "tokens": tokens,
+        "offsets": offsets,
+        "labels": final_labels,
+        "token_confidences": final_confidences,
+        "argmax_labels": argmax_labels,
+        "argmax_confidences": argmax_confidences,
+        "token_probabilities": token_probabilities,
+        "aspect_probabilities": aspect_probabilities,
+        "raw_spans": [bm.asdict(span) for span in argmax_spans],
+        "spans": [bm.asdict(span) for span in final_spans],
     }
 
-    spans = list(ate_output["raw_spans"])
+    spans = final_spans
     if not spans:
         return result
 
@@ -235,22 +389,44 @@ def render_ate(result: dict[str, Any]) -> None:
         st.write("ATE was skipped because Gate did not pass.")
         return
 
+    st.write(
+        "Mode: "
+        + ("Aspect probability threshold" if ate["mode"] == "threshold" else "Argmax BIO")
+    )
+    if ate["mode"] == "threshold":
+        st.write(f"Aspect threshold: {format_float(ate['aspect_threshold'])}")
+
     token_rows = [
         {
             "token": token,
             "label": label,
             "confidence": format_float(confidence),
+            "aspect_probability": format_float(aspect_prob),
+            "argmax_label": argmax_label,
+            "argmax_confidence": format_float(argmax_confidence),
         }
-        for token, label, confidence in zip(
+        for token, label, confidence, aspect_prob, argmax_label, argmax_confidence in zip(
             ate["tokens"],
             ate["labels"],
             ate["token_confidences"],
+            ate["aspect_probabilities"],
+            ate["argmax_labels"],
+            ate["argmax_confidences"],
         )
     ]
     st.dataframe(token_rows, use_container_width=True, hide_index=True)
 
+    if ate["raw_spans"]:
+        with st.expander("Argmax BIO spans"):
+            raw_rows = []
+            for span in ate["raw_spans"]:
+                row = dict(span)
+                row["confidence"] = format_float(row.get("confidence"))
+                raw_rows.append(row)
+            st.dataframe(raw_rows, use_container_width=True, hide_index=True)
+
     if ate["spans"]:
-        st.write("Predicted aspect spans")
+        st.write("Final predicted aspect spans")
         span_rows = []
         for span in ate["spans"]:
             row = dict(span)
@@ -258,7 +434,7 @@ def render_ate(result: dict[str, Any]) -> None:
             span_rows.append(row)
         st.dataframe(span_rows, use_container_width=True, hide_index=True)
     else:
-        st.write("No aspect predicted.")
+        st.write("No final aspect predicted.")
 
 
 def render_asc(result: dict[str, Any]) -> None:
@@ -295,6 +471,15 @@ def main() -> None:
 
         use_gate = st.checkbox("Use Gate", value=True)
         gate_threshold = st.slider("Gate threshold", 0.0, 1.0, 0.5, 0.01)
+        use_aspect_threshold = st.checkbox("Use aspect threshold", value=False)
+        aspect_threshold = st.slider(
+            "Aspect threshold",
+            0.0,
+            1.0,
+            0.5,
+            0.01,
+            disabled=not use_aspect_threshold,
+        )
         device_arg = st.selectbox("Device", ["auto", "cpu", "cuda"], index=0)
         max_length = st.number_input("Max length", min_value=16, max_value=512, value=192, step=8)
 
@@ -323,6 +508,8 @@ def main() -> None:
                 sentence=sentence,
                 use_gate=use_gate,
                 gate_threshold=gate_threshold,
+                use_aspect_threshold=use_aspect_threshold,
+                aspect_threshold=aspect_threshold,
                 gate_model_path=gate_model_path,
                 ate_model_path=ate_model_path,
                 asc_model_path=asc_model_path,
